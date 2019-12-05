@@ -1,12 +1,12 @@
 datatype numbers = N of int
-datatype tv = true | false
+datatype tv = B of bool
 datatype location = Loc of string
 datatype exp = Constant of numbers
-						 | Loc of location
+						 | Location of location
 						 | Add of exp * exp
 						 | Sub of exp * exp
 						 | Mult of exp * exp
-datatype bexp = Constant of tv
+datatype bexp = TV of tv
               | Equals of bexp * bexp
               | LTE of bexp * bexp
               | Negate of bexp
