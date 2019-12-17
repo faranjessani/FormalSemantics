@@ -1,19 +1,17 @@
-datatype numbers = N of int
-datatype tv = B of bool
-datatype location = Loc of string
-datatype exp = Constant of numbers
-						 | Location of location
-						 | Add of exp * exp
-						 | Sub of exp * exp
-						 | Mult of exp * exp
-datatype bexp = TV of tv
+datatype aexp = Constant of int
+						 | Location of string
+						 | Add of aexp * aexp
+						 | Sub of aexp * aexp
+						 | Mult of aexp * aexp
+datatype bexp = True
+              | False
               | Equals of bexp * bexp
-              | LTE of bexp * bexp
+              | LTE of aexp * aexp
               | Negate of bexp
               | And of bexp * bexp
               | Or of bexp * bexp
-datatype command = Skip
-                 | Assign of location * exp
-                 | Collate of command * command
-                 | Cond of bexp * command * command
-                 | While of bexp * command
+datatype cexp = Skip
+               | Assign of aexp * aexp
+               | Collate of cexp * cexp
+               | If of bexp * cexp * cexp
+               | While of bexp * cexp
