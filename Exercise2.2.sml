@@ -24,9 +24,8 @@ fun aexp expression sigma =
 					v1 * v2
 				end
 
-fun state loc = 
-	case loc of
-			_ 	 => 0
+fun state (loc: string) : int = 
+	case loc of _ => 0
 
 val should_be_1 = aexp (Constant 1) state
 val should_be_0 = aexp (Location "Init") state

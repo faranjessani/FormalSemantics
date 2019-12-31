@@ -1,17 +1,17 @@
-datatype aexp = Constant of int
+datatype a = Constant of int
 						 | Location of string
-						 | Add of aexp * aexp
-						 | Sub of aexp * aexp
-						 | Mult of aexp * aexp
-datatype bexp = True
+						 | Add of a * a
+						 | Sub of a * a
+						 | Mult of a * a
+datatype b = True
               | False
-              | Equals of bexp * bexp
-              | LTE of aexp * aexp
-              | Negate of bexp
-              | And of bexp * bexp
-              | Or of bexp * bexp
-datatype cexp = Skip
-               | Assign of aexp * aexp
-               | Collate of cexp * cexp
-               | If of bexp * cexp * cexp
-               | While of bexp * cexp
+              | Equals of b * b
+              | LTE of a * a
+              | Negate of b
+              | And of b * b
+              | Or of b * b
+datatype c = Skip
+               | Assign of a * a
+               | Collate of c * c
+               | If of b * c * c
+               | While of b * c
