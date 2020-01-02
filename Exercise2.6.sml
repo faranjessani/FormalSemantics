@@ -61,6 +61,28 @@ fun cexp expr state =
 		in
 			new_state
 		end
+	| Seq (c0, c1) =>
+		let
+			val result1 = cexp c0 state
+		in
+			cexp c1 result1
+		end
+	| Con (b0, c0, c1) =>
+		let
+			val b = bexp b0 state
+		in
+			if b 
+			then cexp (c0, state) 
+			else cexp (c1, state)
+		end
+	| While (b0, c0) =>
+		let
+			val b = bexp b0 state
+		in
+			if b
+			then 
+				cexp (Seq (c0, (While (b0, c0))), state)
+		end
 
 val bexp_True = bexp True state
 val bexp_Equals_True = bexp (Equals (False, False)) state
